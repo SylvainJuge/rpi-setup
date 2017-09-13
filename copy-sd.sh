@@ -56,4 +56,14 @@ echo "writing to ${dev}..."
 unzip -p "${img}" | sudo dd of="${dev}" bs=4M conv=fsync
 sync
 
+echo "enable ssh by default"
+
+# enable ssh by adding 'ssh' file in boot partition
+rootPartition=$(blkid -t LABEL="boot" ${dev}* | sed 's/:.*//g')
+tempMount=$(mktemp -d)
+mount ${rootPartition} ${tempMount}
+touch ${tempMount}/ssh
+umount ${tempMount}
+rm -rf ${tempMount}
+
 echo "you can eject SD card and plug into Pi"
