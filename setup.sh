@@ -4,14 +4,14 @@ set -e
 set -u
 set -o pipefail
 
-# arguments
-# 1: raspbian image
-# 2: target sd card
-
 if [[ "${EUID}" -ne '0' ]]; then
 	echo "this script requires to run as root"
 	exit 1
 fi
+# arguments
+
+# 1: raspbian image
+# 2: target sd card
 
 img="${1?image file required}"
 dev="${2?target device required}"
@@ -53,7 +53,7 @@ if [[ 'Y' != "${confirm}" ]]; then
 fi
 
 echo "writing to ${dev}..."
-unzip -p "${img}" | sudo dd of="${dev}" bs=4M conv=fsync
+#unzip -p "${img}" | sudo dd of="${dev}" bs=4M conv=fsync
 sync
 
 echo "enable ssh by default"
