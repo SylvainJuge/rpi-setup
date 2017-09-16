@@ -1,0 +1,6 @@
+
+- name: add user ssh key
+  authorized_key:
+    user: "{{ansible_user}}"
+    state: present
+    key: "{{ssh_keys_url}}"

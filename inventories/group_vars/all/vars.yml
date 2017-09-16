@@ -1,0 +1,4 @@
+ansible_user: 'pi'
+
+ssh_keys_url: 'https://github.com/sylvainjuge.keys'
+user: 'pi'

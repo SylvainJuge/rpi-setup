@@ -1,2 +1,2 @@
-- name: 'change default user passwod'
-  shell: 'echo "pi:unsecure" | chpasswd'
+#- name: 'change default user passwod'
+#  shell: 'echo "pi:unsecure" | chpasswd'
