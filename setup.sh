@@ -53,7 +53,7 @@ if [[ 'Y' != "${confirm}" ]]; then
 fi
 
 echo "writing to ${dev}..."
-#unzip -p "${img}" | sudo dd of="${dev}" bs=4M conv=fsync
+unzip -p "${img}" | sudo dd of="${dev}" bs=4M conv=fsync
 sync
 
 echo "enable ssh by default"
