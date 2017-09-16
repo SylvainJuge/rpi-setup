@@ -1,5 +1,6 @@
 ---
-- hosts: all
-  tasks:
-    - name: 'uptime'
-      shell: '/usr/bin/uptime'
+- hosts: [ raspberry ]
+  become: yes
+  roles:
+    - { role: common }
+    - { role: ssh }
