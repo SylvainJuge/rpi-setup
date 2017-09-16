@@ -2,5 +2,12 @@
 - hosts: [ raspberry ]
   become: yes
   roles:
-    - { role: common }
-    - { role: ssh }
+    - { role: common,
+        tags: [ common ]
+      }
+    - { role: ssh,
+        tags: [ ssh ]
+      }
+    - { role: synergy,
+        tags: [ synergy ]
+      }

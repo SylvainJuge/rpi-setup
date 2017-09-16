@@ -1,0 +1,39 @@
+---
+# TODO : test if already installed with expected version before doing anything
+
+- name: 'install prerequisites'
+  package:
+    name: "{{item}}"
+    state: latest
+  with_items:
+  - git
+  - build-essential
+  - cmake
+  - libavahi-compat-libdnssd-dev
+  - libcurl4-openssl-dev
+  - libssl-dev
+  - python
+  - qt4-dev-tools
+  - xorg-dev
+
+- name: 'grab sources'
+  git:
+    repo: 'https://github.com/symless/synergy-core.git'
+    version: "{{synergy_version}}"
+    dest: "synergy"
+
+- name: 'configure build'
+  shell: 'hm.sh -g1'
+  args:
+    chdir: 'synergy'
+
+- name: 'build'
+  shell: 'hm.sh build'
+  args:
+    chdir: 'synergy'
+
+- name: 'copy compiled binaries'
+  shell: 'cp bin/syn* /usr/local/bin'
+  args:
+    chdir: 'synergy'
+  become: true # requires root
