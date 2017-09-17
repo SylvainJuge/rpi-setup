@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 set -e
 set -u
@@ -10,6 +10,7 @@ if [[ "${EUID}" -ne '0' ]]; then
 fi
 
 subnet="$(ip -o -f inet addr show | awk '/scope global/ {print $4}')"
+echo "scanning subnet : ${subnet}"
 found_ip="$(nmap -sP "${subnet}" | awk '/^Nmap/{ip=$NF}/B8:27:EB/{print ip}' | sed 's/[()]//g')"
 
 [[ '' == "${found_ip}" ]] && (echo 'not found'; exit 1)
