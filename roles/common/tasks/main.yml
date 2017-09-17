@@ -7,3 +7,4 @@
     state: latest
   with_items:
   - vim
+  - lm-sensors

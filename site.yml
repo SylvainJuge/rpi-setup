@@ -11,3 +11,6 @@
     - { role: synergy,
         tags: [ synergy ]
       }
+    - { role: unicorn-hat,
+        tags: [ unicorn-hat ]
+      }
