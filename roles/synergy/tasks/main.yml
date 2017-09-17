@@ -43,4 +43,4 @@
 - name: 'copy compiled binaries'
   shell: 'cp ./bin/syn* /usr/local/bin'
   args:
-    chdir: "{{synergy_folder}}"
+    chdir: "{{synergy_folder}}/build"
