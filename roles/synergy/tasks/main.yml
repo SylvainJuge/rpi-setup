@@ -20,20 +20,27 @@
   git:
     repo: 'https://github.com/symless/synergy-core.git'
     version: "{{synergy_version}}"
-    dest: "synergy"
+    dest: "{{synergy_folder}}"
+  become: true
+
+- name: 'create build folder'
+  file:
+    path: "{{synergy_folder}}/build"
+    state: directory
 
 - name: 'configure build'
-  shell: 'hm.sh -g1'
+  shell: 'cmake ..'
   args:
-    chdir: 'synergy'
+    chdir: "{{synergy_folder}}/build"
+  become: true
 
 - name: 'build'
-  shell: 'hm.sh build'
+  shell: 'make'
   args:
-    chdir: 'synergy'
+    chdir: "{{synergy_folder}}/build"
+  become: true
 
 - name: 'copy compiled binaries'
-  shell: 'cp bin/syn* /usr/local/bin'
+  shell: 'cp ./bin/syn* /usr/local/bin'
   args:
-    chdir: 'synergy'
-  become: true # requires root
+    chdir: "{{synergy_folder}}"
