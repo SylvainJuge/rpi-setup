@@ -14,3 +14,6 @@
     - { role: unicorn-hat,
         tags: [ unicorn-hat ]
       }
+    - { role: dht22,
+        tags: [ dht22 ]
+      }
