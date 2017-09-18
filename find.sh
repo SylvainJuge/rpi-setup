@@ -13,4 +13,9 @@ subnet="$(ip -o -f inet addr show | awk '/scope global/ {print $4}')"
 echo "scanning subnet : ${subnet}"
 found_ip="$(nmap -sP "${subnet}" | awk '/^Nmap/{ip=$NF}/B8:27:EB/{print ip}' | sed 's/[()]//g')"
 
-[[ '' == "${found_ip}" ]] && (echo 'not found'; exit 1)
+if [[ '' == "${found_ip}" ]]; then
+	echo 'not found'
+	exit 1
+else
+	echo "found: ${found_ip}"
+fi
