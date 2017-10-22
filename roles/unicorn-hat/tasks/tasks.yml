@@ -1,0 +1,19 @@
+---
+- name: 'install prerequisites'
+  package:
+    name: "{{item}}"
+    state: latest
+  with_items:
+  - python-dev
+  - python3-dev
+  become: true
+
+- name: 'get unicorn installer'
+  get_url:
+    url: 'https://get.pimoroni.com/unicornhat'
+    dest: './unicorn-hat-setup'
+
+- name: 'execute unicorn installer'
+  shell: 'echo $USER; bash ./unicorn-hat-setup -y'
+  args:
+    creates: './Pimoroni/unicornhat'

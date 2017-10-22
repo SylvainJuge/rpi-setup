@@ -10,7 +10,5 @@
     - { role: synergy,
         tags: [ synergy ]
       }
-    - { role: unicorn-hat,
-        tags: [ unicorn-hat ]
-      }
+    - { role: unicorn-hat }
     - { role: dht22 }
