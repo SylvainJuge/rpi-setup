@@ -1,0 +1,36 @@
+
+- name: 'install prerequisites'
+  package:
+    name: "{{item}}"
+    state: latest
+  with_items:
+  - git
+  - build-essential
+  - python-dev
+  - python-openssl
+  become: yes
+
+- name: 'install python DHT lib'
+  git:
+    repo: 'https://github.com/adafruit/Adafruit_Python_DHT.git'
+    version: 'master'
+    dest: "{{dht22_folder}}"
+  register: git
+
+- name: 'build'
+  shell: 'python setup.py build'
+  args:
+    chdir: "{{dht22_folder}}"
+  when: git.before != git.after
+
+- name: 'install'
+  shell: 'python setup.py install'
+  args:
+    chdir: "{{dht22_folder}}"
+  when: git.before != git.after
+  become: yes
+
+- name: 'thingsboard send script'
+  copy:
+    src: 'send-thingsboard.py'
+    dest: "{{dht22_folder}}/send-thingsboard.py"

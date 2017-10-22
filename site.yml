@@ -1,6 +1,5 @@
 ---
 - hosts: [ raspberry ]
-  become: yes
   roles:
     - { role: common,
         tags: [ common ]
@@ -14,6 +13,4 @@
     - { role: unicorn-hat,
         tags: [ unicorn-hat ]
       }
-    - { role: dht22,
-        tags: [ dht22 ]
-      }
+    - { role: dht22 }

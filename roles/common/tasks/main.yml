@@ -8,3 +8,4 @@
   with_items:
   - vim
   - lm-sensors
+  become: yes

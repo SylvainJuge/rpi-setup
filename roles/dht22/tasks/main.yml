@@ -1,29 +1,5 @@
-
-- name: 'install prerequisites'
-  package:
-    name: "{{item}}"
-    state: latest
-  with_items:
-  - git
-  - build-essential
-  - python-dev
-  - python-openssl
-
-- name: 'install python DHT lib'
-  git:
-    repo: 'https://github.com/adafruit/Adafruit_Python_DHT.git'
-    version: 'master'
-    dest: "{{dht22_folder}}"
-  become: true
-
-- name: 'build'
-  shell: 'python setup.py build'
-  args:
-    chdir: "{{dht22_folder}}"
-  become: true
-
-- name: 'install'
-  shell: 'sudo python setup.py install'
-  args:
-    chdir: "{{dht22_folder}}"
-  become: true
+---
+- {
+  include: tasks.yml,
+  tags: ['dht22']
+}
