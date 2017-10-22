@@ -1,0 +1,48 @@
+---
+- name: 'install prerequisites'
+  package:
+    name: "{{item}}"
+    state: latest
+  with_items:
+  - git
+  - build-essential
+  - cmake
+  - libavahi-compat-libdnssd-dev
+  - libcurl4-openssl-dev
+  - libssl-dev
+  - python
+  - qt4-dev-tools
+  - xorg-dev
+  become: true
+
+- name: 'grab sources'
+  git:
+    repo: 'https://github.com/symless/synergy-core.git'
+    version: "{{synergy_version}}"
+    dest: "{{synergy_folder}}"
+  register: git
+
+- name: 'create build folder'
+  file:
+    path: "{{synergy_folder}}/build"
+    state: directory
+  when: git.before != git.after
+
+- name: 'configure build'
+  shell: 'cmake ..'
+  args:
+    chdir: "{{synergy_folder}}/build"
+  when: git.before != git.after
+
+- name: 'build'
+  shell: 'make'
+  args:
+    chdir: "{{synergy_folder}}/build"
+  when: git.before != git.after
+
+- name: 'copy compiled binaries'
+  shell: 'cp ./bin/syn* /usr/local/bin'
+  args:
+    chdir: "{{synergy_folder}}/build"
+  when: git.before != git.after
+  become: true

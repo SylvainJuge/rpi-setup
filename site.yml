@@ -7,8 +7,6 @@
     - { role: ssh,
         tags: [ ssh ]
       }
-    - { role: synergy,
-        tags: [ synergy ]
-      }
+    - { role: synergy }
     - { role: unicorn-hat }
     - { role: dht22 }
