@@ -1,0 +1,7 @@
+
+# sudo apt-get install mosquitto-clients
+#
+# lib mqtt python
+# sudo pip install paho-mqtt
+#
+# https://github.com/eclipse/paho.mqtt.python/tree/master/examples

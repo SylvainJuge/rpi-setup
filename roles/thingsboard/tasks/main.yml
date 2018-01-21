@@ -1,0 +1,11 @@
+
+# wget https://github.com/thingsboard/thingsboard/releases/download/v1.3/thingsboard-1.3.deb
+#
+# dpkg -i thingsboard-1.3.deb
+# 
+# /etc/thingsboard/conf/thingsboard.conf
+# export JAVA_OPTS="$JAVA_OPTS -Dplatform=rpi -Xms256M -Xmx256M"
+#
+# load demo user accouts & data
+# sudo /usr/share/thingsboard/bin/install/install.sh --loadDemo
+#
