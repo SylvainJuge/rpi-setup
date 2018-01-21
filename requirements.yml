@@ -1,4 +1,10 @@
 
 # from ansible galaxy
+
+# sshd configuration
 - src: willshersystems.sshd
   version: 0.5.1
+
+# unattended upgrades
+- src: jnv.unattended-upgrades
+  version: v1.4.0

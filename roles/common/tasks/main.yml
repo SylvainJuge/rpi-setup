@@ -9,3 +9,5 @@
   - vim
   - lm-sensors
   become: yes
+  tags:
+  - common

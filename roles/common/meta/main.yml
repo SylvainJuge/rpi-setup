@@ -1,0 +1,10 @@
+---
+dependencies:
+- { role: 'jnv.unattended-upgrades',
+    tags: [ common ],
+    become: yes,
+    unattended_remove_unused_dependencies: true,
+    unattended_automatic_reboot: true,
+    unattended_automatic_reboot_time: '00:00',
+    unattended_origins_patterns: [ 'origin=Raspbian,codename=${distro_codename},label=Raspbian' ]
+}
