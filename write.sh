@@ -158,7 +158,6 @@ rootPartition=$(blkid -t LABEL="rootfs" ${dev}* | sed 's/:.*//g')
 tempMount=$(mktemp -d)
 
 # modify boot partition
-mount ${bootPartition} ${tempMount}
 if [[ '1' == "${enable_ssh}" ]]; then
     echo "> enable ssh by default"
     # enable ssh by adding 'ssh' file in boot partition

@@ -3,8 +3,8 @@
 
 # sshd configuration
 - src: willshersystems.sshd
-  version: 0.5.1
+  version: v0.7.5
 
 # unattended upgrades
 - src: jnv.unattended-upgrades
-  version: v1.4.0
+  version: v1.7.0
