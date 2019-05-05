@@ -3,5 +3,6 @@ dependencies:
 - { role: 'willshersystems.sshd',
     tags: [ ssh ],
     sshd_PermitRootLogin: 'no',
-    sshd_PermitEmptyPasswords: 'no'
+    sshd_PermitEmptyPasswords: 'no',
+    become: 'yes'
 }
