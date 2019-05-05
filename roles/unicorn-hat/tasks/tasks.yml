@@ -13,6 +13,12 @@
     url: 'https://get.pimoroni.com/unicornhat'
     dest: './unicorn-hat-setup'
 
+- name: 'disable audio part from unicorn installer'
+  lineinfile:
+    path: './unicorn-hat-setup'
+    regexp: '^customcmd=.*'
+    line: 'customcmd="no"'
+
 - name: 'execute unicorn installer'
   shell: 'echo $USER; bash ./unicorn-hat-setup -y'
   args:
