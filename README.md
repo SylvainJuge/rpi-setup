@@ -1,5 +1,10 @@
 Almost automated raspberry setup procedure from Debian/Ubuntu
 
+# Requirements
+
+    # ansible 2.x
+    sudo apt install ansible
+
 # Steps
 
 1. download image
@@ -31,11 +36,6 @@ Almost automated raspberry setup procedure from Debian/Ubuntu
     # lite raspbian image
     transmission-cli https://downloads.raspberrypi.org/raspbian_lite_latest.torrent
 
-
-# requirements
-
-    # ansible 2.x
-    sudo apt install ansible
 
 # dht22 wiring
 
